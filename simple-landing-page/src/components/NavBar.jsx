@@ -6,7 +6,7 @@ const NavBar = () => {
       <nav className="flex justify-around items-center w=full h-full mx-auto   ">
         <div>logo</div>
         <div className="">
-          <ul className=" hidden lg:flex flex gap-7">
+          <ul className=" hidden lg:flex  gap-7">
             <li>MANU</li>
             <li>LOCATION</li>
             <li>ABOUT</li>
@@ -24,3 +24,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+//
