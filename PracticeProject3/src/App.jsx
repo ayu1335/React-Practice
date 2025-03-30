@@ -7,7 +7,7 @@ const App = () => {
     <div className="w-screen h-screen flex">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/details/:id" element={<Details />} />>
+        <Route path="/details/:id" element={<Details />} />
       </Routes>
     </div>
   );
