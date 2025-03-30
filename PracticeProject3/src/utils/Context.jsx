@@ -8,7 +8,6 @@ const Context = (props) => {
     try {
       const { data } = await instance("/products");
       setproduct(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }

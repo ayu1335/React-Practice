@@ -14,7 +14,7 @@ const Home = () => {
       <div className="w-[85%] p-10 pt-[5%] flex flex-wrap overflow-x-hidden overflow-y-auto">
         {products.map((p, i) => (
           <Link
-            to={`/details/:${p.id}`}
+            to={`/details/${p.id}`}
             className="mr-3 mb-3 p-3 w-[18%] h-[30vh] border shadow rounded flex flex-col justify-center items-center"
           >
             <div

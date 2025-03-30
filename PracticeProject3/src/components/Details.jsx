@@ -1,28 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { ProductContext } from "../utils/Context";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 import Loading from "./Loading";
+import instance from "../utils/axios";
 
 const Details = () => {
-  const [products] = useContext(ProductContext);
-  return products ? (
+  const [product, setproduct] = useState(null);
+  const { id } = useParams();
+  console.log(id);
+  const getSingleProduct = async () => {
+    try {
+      const { data } = await instance(`/products/${id}`);
+      setproduct(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getSingleProduct();
+  }, []);
+  return product ? (
     <div className="flex w-[70%] h-full p-[10%] justify-between items-center m-auto">
-      <img
-        className="w-[40%] h-[80%]"
-        src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-        alt=""
-      />
+      <img className="w-[40%] h-[80%]" src={`${product.image}`} alt="" />
       <div className="content w-[50%]">
-        <h1 className="text-4xl">
-          Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
-        </h1>
-        <h2 className="text-sm text-zinc-400 my-5 ">men's clothing</h2>
-        <h3 className="mb-3 text-zinc-400">$ 109.95</h3>
-        <p className="mb-5">
-          Your perfect pack for everyday use and walks in the forest. Stash your
-          laptop (up to 15 inches) in the padded sleeve, your everyday
-        </p>
+        <h1 className="text-4xl">{product.title}</h1>
+        <h2 className="text-sm text-zinc-400 my-5 ">{product.category}</h2>
+        <h3 className="mb-3 text-zinc-400">{product.title}</h3>
+        <p className="mb-5">{product.description}</p>
         <Link className="py-3 px-5 border rounded border-blue-200 text-blue-300 mr-5  ">
           Edit
         </Link>
