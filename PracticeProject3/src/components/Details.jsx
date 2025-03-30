@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ProductContext } from "../utils/Context";
+import Loading from "./Loading";
 
 const Details = () => {
-  return (
+  const [products] = useContext(ProductContext);
+  return products ? (
     <div className="flex w-[70%] h-full p-[10%] justify-between items-center m-auto">
       <img
         className="w-[40%] h-[80%]"
@@ -27,6 +31,8 @@ const Details = () => {
         </Link>
       </div>
     </div>
+  ) : (
+    <Loading />
   );
 };
 
