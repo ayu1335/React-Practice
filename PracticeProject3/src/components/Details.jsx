@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Loading from "./Loading";
 import instance from "../utils/axios";
+import { ProductContext } from "../utils/Context";
 
 const Details = () => {
+  const [products, setproducts] = useContext(ProductContext);
   const [product, setproduct] = useState(null);
   const { id } = useParams();
-  console.log(id);
   const getSingleProduct = async () => {
     try {
       const { data } = await instance(`/products/${id}`);
